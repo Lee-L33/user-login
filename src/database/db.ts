@@ -4,13 +4,18 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export const AppdataSource = new DataSource({
-    type: 'mysql',
-    host: process.env.DB_HOST,
+    type: 'mongodb',
+    url: process.env.DB_URL,
     port: Number(process.env.DB_PORT),
+    database: process.env.DB_DATABASE,
     username: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE,
-    synchronize: true,
+    synchronize: true,  // ❗ควรปิดใน production
     logging: false,
-    entities: [],
+    authSource: 'admin',  // ✅ สำคัญเมื่อใช้ username/password
+    entities: [
+        // ใส่ entities ของคุณเช่น:
+        // User,
+        // Product,
+    ],
 });

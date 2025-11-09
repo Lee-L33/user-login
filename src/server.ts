@@ -11,7 +11,7 @@ const startServer = async () => {
 
     AppdataSource.initialize()
     .then(() => {
-        console.log("hello world");
+        console.log("Mongodb connected successfully");
 
         const server = app.listen(PORT, () => {
             console.log(`Serveris running on http://localhost:${PORT}`);
